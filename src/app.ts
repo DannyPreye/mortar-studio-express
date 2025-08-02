@@ -31,6 +31,7 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use((req: Request, res: Response, next: NextFunction) => {
     res.locals.currentPath = req.path;
+    res.locals.metadata = metadata;
     next();
 });
 

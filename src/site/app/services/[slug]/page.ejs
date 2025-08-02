@@ -5,70 +5,61 @@
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/" class="text-decoration-none">Home</a></li>
           <li class="breadcrumb-item"><a href="/services" class="text-decoration-none">Services</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Web Development</li>
+          <li class="breadcrumb-item active" aria-current="page"><%= locals.service?.name || 'Service' %></li>
         </ol>
       </nav>
 
-      <div class="text-center mb-5">
-        <h1 class="display-4 fw-bold text-primary">Web Development</h1>
-        <p class="lead text-muted">Custom web applications built with modern technologies</p>
-      </div>
+      <% if (locals.service) { %>
+        <div class="text-center mb-5">
+          <h1 class="display-4 fw-bold text-primary"><%= locals.service.name %></h1>
+          <p class="lead text-muted"><%= locals.service.description %></p>
+        </div>
 
-      <div class="row g-4 mb-5">
-        <div class="col-md-6">
-          <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&h=400&fit=crop&crop=center" class="img-fluid rounded shadow" alt="Web development" style="width: 100%; height: 300px; object-fit: cover;">
+        <div class="row g-4 mb-5">
+          <div class="col-md-6">
+            <img src="<%= locals.service.image %>" class="img-fluid rounded shadow" alt="<%= locals.service.name %>" style="width: 100%; height: 300px; object-fit: cover;">
+          </div>
+          <div class="col-md-6">
+            <h3 class="fw-bold mb-3">What We Offer</h3>
+            <p class="mb-4"><%= locals.service.details %></p>
+            <% if (locals.service.features && locals.service.features.length > 0) { %>
+              <ul class="list-unstyled">
+                <% locals.service.features.forEach(feature => { %>
+                  <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i><%= feature %></li>
+                <% }) %>
+              </ul>
+            <% } %>
+          </div>
         </div>
-        <div class="col-md-6">
-          <h3 class="fw-bold mb-3">What We Offer</h3>
-          <ul class="list-unstyled">
-            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Custom Web Applications</li>
-            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>E-commerce Solutions</li>
-            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Content Management Systems</li>
-            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>API Development</li>
-            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Database Design</li>
-            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Performance Optimization</li>
-          </ul>
-        </div>
-      </div>
 
-      <div class="bg-light p-4 rounded mb-5">
-        <h3 class="fw-bold mb-3">Technologies We Use</h3>
-        <div class="row g-3">
-          <div class="col-md-3 col-sm-6">
-            <div class="badge bg-primary fs-6 w-100 py-2">React</div>
+        <% if (locals.service.technologies && locals.service.technologies.length > 0) { %>
+          <div class="bg-light p-4 rounded mb-5">
+            <h3 class="fw-bold mb-3">Technologies We Use</h3>
+            <div class="row g-3">
+              <% locals.service.technologies.forEach((tech, index) => { %>
+                <div class="col-md-3 col-sm-6">
+                  <div class="badge bg-primary fs-6 w-100 py-2"><%= tech %></div>
+                </div>
+              <% }) %>
+            </div>
           </div>
-          <div class="col-md-3 col-sm-6">
-            <div class="badge bg-success fs-6 w-100 py-2">Node.js</div>
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <div class="badge bg-warning fs-6 w-100 py-2">TypeScript</div>
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <div class="badge bg-info fs-6 w-100 py-2">Next.js</div>
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <div class="badge bg-danger fs-6 w-100 py-2">MongoDB</div>
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <div class="badge bg-secondary fs-6 w-100 py-2">PostgreSQL</div>
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <div class="badge bg-dark fs-6 w-100 py-2">GraphQL</div>
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <div class="badge bg-primary fs-6 w-100 py-2">AWS</div>
-          </div>
-        </div>
-      </div>
+        <% } %>
 
-      <div class="text-center mb-5">
-        <h3 class="fw-bold mb-4">Ready to Get Started?</h3>
-        <p class="lead mb-4">Let's discuss your web development project and bring your ideas to life.</p>
-        <div class="d-flex gap-3 justify-content-center">
-          <a href="/services/web-development/apply" class="btn btn-primary btn-lg">Apply Now</a>
-          <a href="/contact-us" class="btn btn-outline-primary btn-lg">Contact Us</a>
+        <div class="text-center mb-5">
+          <h3 class="fw-bold mb-4">Ready to Get Started?</h3>
+          <p class="lead mb-4">Let's discuss your <%= locals.service.name.toLowerCase() %> project and bring your ideas to life.</p>
+          <div class="d-flex gap-3 justify-content-center">
+            <a href="/contact-us" class="btn btn-primary btn-lg">Get Quote</a>
+            <a href="/contact-us" class="btn btn-outline-primary btn-lg">Contact Us</a>
+          </div>
         </div>
-      </div>
+      <% } else { %>
+        <div class="text-center">
+          <h1 class="display-4 fw-bold text-danger">Service Not Found</h1>
+          <p class="lead text-muted">The service you're looking for doesn't exist.</p>
+          <a href="/services" class="btn btn-primary">View All Services</a>
+        </div>
+      <% } %>
 
       <div class="text-center">
         <a href="/services" class="btn btn-secondary">← Back to Services</a>
