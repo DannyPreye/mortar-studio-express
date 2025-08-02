@@ -1,9 +1,11 @@
+
 import express, { Request, Response, NextFunction } from 'express';
 import path from 'path';
 import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import ejsLayouts from 'express-ejs-layouts';
 import fs from 'fs';
+import metadata from './metadata.js';
 dotenv.config();
 
 
@@ -19,8 +21,12 @@ app.use(ejsLayouts);
 app.set('layout', 'layout/default');
 app.use('/static', express.static(path.join(rootDir, 'src/site/public')));
 
+
 app.use((req: Request, res: Response, next: NextFunction) => {
     res.locals.currentPath = req.path;
+    if (metadata.title) res.locals.title = metadata.title;
+    if (metadata.description) res.locals.description = metadata.description;
+    if (metadata.twitterHandle) res.locals.twitterHandle = metadata.twitterHandle;
     next();
 });
 
