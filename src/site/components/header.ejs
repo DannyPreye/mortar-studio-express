@@ -13,7 +13,10 @@
           <a class="nav-link<%= currentPath === '/about-us' ? ' active' : '' %>" href="/about-us">About Us</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link<%= currentPath === '/blog' ? ' active' : '' %>" href="/blog">Blog</a>
+          <a class="nav-link<%= currentPath.startsWith('/services') ? ' active' : '' %>" href="/services">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link<%= currentPath.startsWith('/blog') ? ' active' : '' %>" href="/blog">Blog</a>
         </li>
         <li class="nav-item">
           <a class="nav-link<%= currentPath === '/contact-us' ? ' active' : '' %>" href="/contact-us">Contact Us</a>
