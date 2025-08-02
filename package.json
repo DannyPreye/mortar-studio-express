@@ -1,0 +1,32 @@
+{
+  "name": "mortar-studio-express",
+  "version": "1.0.0",
+  "description": "Mortar studio setup with express",
+  "type": "module",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "tsup src/server.ts --watch --format esm --onSuccess \"npx node dist/server.js\"",
+    "build": "tsup src/server.ts --format esm",
+    "start": "npx node dist/server.js",
+    "clean": "rimraf dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.1",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "rimraf": "^6.0.1",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.1.0"
+  }
+}
