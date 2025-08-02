@@ -8,8 +8,7 @@ kill_timeout = 5
   PORT = "8080"
   NODE_ENV = "production"
 
-[build]
-  dockerfile = "Dockerfile"
+
 
 [deploy]
   release_command = "npm run build"
@@ -27,7 +26,7 @@ kill_timeout = 5
   memory_mb = 256
 
 [checks]
-  [checks.health]
+  [checks.http]
     interval = "10s"
     timeout = "2s"
     grace_period = "5s"
