@@ -2,6 +2,8 @@ import express, { Request, Response, NextFunction } from 'express';
 import path from 'path';
 import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
+import ejsLayouts from 'express-ejs-layouts';
+import fs from 'fs';
 dotenv.config();
 
 
@@ -12,7 +14,9 @@ const rootDir = path.resolve(__dirname, '..');
 const app = express();
 
 app.set('view engine', 'ejs');
-app.set('views', path.join(rootDir, 'src/site/pages'));
+app.set('views', path.join(rootDir, 'src/site'));
+app.use(ejsLayouts);
+app.set('layout', 'layout/default');
 app.use('/static', express.static(path.join(rootDir, 'src/site/public')));
 
 app.use((req: Request, res: Response, next: NextFunction) => {
@@ -21,16 +25,22 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 });
 
 app.get('/', (req: Request, res: Response) => {
-    res.render('index', { layout: '../layout/default' });
+    res.render('pages/index');
 });
 
 app.get('/:page', (req: Request, res: Response, next: NextFunction) => {
     const page = req.params.page;
-    res.render(page, { layout: '../layout/default' });
+    const pagePath = path.join(rootDir, 'src/site/pages', `${page}.ejs`);
+    
+    if (fs.existsSync(pagePath)) {
+        res.render(`pages/${page}`);
+    } else {
+        next();
+    }
 });
 
 app.use((req: Request, res: Response) => {
-    res.status(404).render('404', { layout: '../layout/default' });
+    res.status(404).render('pages/404');
 });
 
 export default app;
