@@ -1,7 +1,7 @@
 
-# Mortar Studio Express
+# Ejs Express Boilerplate
 
-Mortar Studio Express is a modern Express.js starter template using EJS, Bootstrap, and TypeScript. It features dynamic routing, layout support, and a clean project structure for rapid web development.
+Ejs Express Boilerplate is a modern Express.js starter template using EJS, Bootstrap, and TypeScript. It features dynamic routing, layout support, and a clean project structure for rapid web development.
 
 ## Features
 
@@ -23,7 +23,7 @@ Mortar Studio Express is a modern Express.js starter template using EJS, Bootstr
 1. Clone the repository:
    ```bash
    git clone <repo-url>
-   cd mortar-studio-express
+   cd express-ejs-boilerplate
    ```
 
 2. Install dependencies:

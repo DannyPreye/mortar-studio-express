@@ -1,5 +1,5 @@
 export default {
-    title: 'My Mortar Studio Site',
-    description: 'This is a sample metadata configuration for a Mortar Studio Express application.',
+    title: 'Express EJS Boilerplate',
+    description: 'This is a sample metadata configuration for an Express EJS Boilerplate application.',
     twitterHandle: '',
 }
