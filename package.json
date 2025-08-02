@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "tsup \"src/**/*.ts\" --watch --format esm --onSuccess \"npx node dist/server.js\"",
     "build": "tsup \"src/**/*.ts\" --format esm",
-    "start": "npx node dist/server.js",
+    "start": "node dist/server.js",
     "clean": "rimraf dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

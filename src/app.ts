@@ -35,6 +35,10 @@ app.use((req: Request, res: Response, next: NextFunction) => {
     next();
 });
 
+app.get('/health', (req: Request, res: Response) => {
+    res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
 app.use(dynamicRouter.middleware());
 
 app.use((req: Request, res: Response) => {
