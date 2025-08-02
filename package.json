@@ -1,7 +1,7 @@
 {
-  "name": "mortar-studio-express",
+  "name": "express-ejs-boilerplate",
   "version": "1.0.0",
-  "description": "Mortar studio setup with express",
+  "description": "Express.js boilerplate with EJS and Bootstrap",
   "type": "module",
   "main": "dist/server.js",
   "scripts": {
@@ -11,8 +11,14 @@
     "clean": "rimraf dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "boilerplate",
+    "express",
+    "ejs",
+    "bootstrap",
+    "typescript"
+  ],
+  "author": "iDegin Technologies",
   "license": "ISC",
   "engines": {
     "node": ">=18.0.0"

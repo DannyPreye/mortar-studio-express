@@ -23,7 +23,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(rootDir, 'src/site'));
 app.use(ejsLayouts);
 app.set('layout', 'layout/default');
-app.use('/static', express.static(path.join(rootDir, 'src/site/public')));
+app.use(express.static(path.join(rootDir, 'src/site/public')));
 
 if (process.env.NODE_ENV === 'development') {
     app.use(createRouteDebugger());
